@@ -31,15 +31,15 @@ logger = logging.getLogger(__name__)
 
 def start(update, context):
     update.message.reply_text(
-        "This bot can search in arch wiki for you in in-line mode.\n/help for more info.",
+        "Этот бот может осуществлять поиск в arch wiki за вас в режиме in-line.\n/help для получения дополнительной информации.",
     )
 
 
 def help(update, context):
     update.message.reply_text(
-        """To search with this bot you can easily type @archwikibot and then something you want to search. for example :
+        """Для поиска с помощью этого бота можно просто набрать @archwikibot и затем то, что вы хотите найти. например :
 @archwikibot Tor
-or
+или
 @archwikibot Cron
 ...""",
     )
@@ -54,7 +54,7 @@ def inlinequery(update, context):
     try:
         page = get(prefix + query)
     except Exception as e:
-        update.message.reply_text("Sorry, archlinux wiki is offline.")
+        update.message.reply_text("Извините, archlinux wiki не работает.")
         logger.error(e)
         return
 
@@ -80,7 +80,7 @@ def inlinequery(update, context):
                 ),
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [InlineKeyboardButton("Read the docs", url=link)],
+                        [InlineKeyboardButton("Прочитать документацию", url=link)],
                     ]
                 ),
             )
